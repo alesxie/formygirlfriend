@@ -342,7 +342,7 @@ function GalleryTab() {
       }}>
         {tabs.map(t => (
           <button key={t.id} onClick={() => setActiveTab(t.id)} style={{
-            padding: "10px 24px", borderRadius: 50, border: "none", cursor: "pointer",
+            padding: "10px 24px", borderRadius: 50, cursor: "pointer",
             background: activeTab === t.id
               ? "linear-gradient(135deg, #ff6b9d, #d63384)"
               : "rgba(255,255,255,0.9)",
@@ -352,7 +352,8 @@ function GalleryTab() {
               ? "0 4px 14px rgba(214,51,132,0.35)"
               : "0 2px 8px rgba(0,0,0,0.06)",
             transition: "all 0.2s",
-            border: activeTab === t.id ? "none" : "2px solid #ffb6c1",
+            // avoid duplicate 'border' property; set conditional outline instead
+            outline: activeTab === t.id ? "none" : "2px solid #ffb6c1",
           }}>
             {t.label}
           </button>
